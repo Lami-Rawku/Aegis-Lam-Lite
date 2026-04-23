@@ -58,13 +58,13 @@ st.divider()
 left_col, right_col = st.columns([1, 1])
 
 with left_col:
-    st.subheader("⚡ 엔진 성능 실측 (Real-time)")
+    st.subheader("엔진 성능 실측 (Real-time)")
     c1, c2 = st.columns(2)
     c1.success(f"**Pure Logic**\n\n10,621 Bytes")
     c2.warning(f"**Runtime Memory**\n\n25.4 MB")
     
     st.write("---")
-    st.write("📈 **리소스 부하 트래킹**")
+    st.write("**리소스 부하 트래킹**")
     # 현재는 소장님 PC의 CPU 부하를 시각화 (임시)
     chart_data = pd.DataFrame(np.random.uniform(0.05, 0.1, size=(20, 1)), columns=['CPU %'])
     st.area_chart(chart_data)
