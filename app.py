@@ -57,7 +57,7 @@ data = get_real_metrics()
 
 # --- [DASHBOARD UI] ---
 
-st.title("🛡️ Aegis-Lam Lite V2.0: Global Sentinel")
+st.title("Aegis-Lam Lite V2.0: Global Sentinel")
 st.caption(f"Administered by Rawku | System Status: Active | Last Sync: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 st.divider()
@@ -80,7 +80,7 @@ st.divider()
 left_col, right_col = st.columns([1, 1.2])
 
 with left_col:
-    st.subheader("⚡ 엔진 성능 실측 (Efficiency)")
+    st.subheader("엔진 성능 실측 (Efficiency)")
     c1, c2 = st.columns(2)
     c1.success(f"**Pure Logic**\n\n10,621 Bytes")
     c2.warning(f"**Runtime Memory**\n\n25.4 MB")
@@ -91,7 +91,7 @@ with left_col:
     st.area_chart(chart_data)
 
 with right_col:
-    st.subheader("🚨 시스템 무결성 로그 (Live Feed)")
+    st.subheader("시스템 무결성 로그 (Live Feed)")
     st.code(data['logs'], language="bash")
     
     if st.button("수동 동기화 (Force Sync)"):
