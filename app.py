@@ -43,14 +43,14 @@ col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     # 허깅페이스 API를 통해 누군가 받으면 즉시 1씩 올라갑니다.
-    st.metric(label="📊 실시간 배포 (HuggingFace)", value=f"{data['total_deployments']} Units")
+    st.metric(label="실시간 배포 (HuggingFace)", value=f"{data['total_deployments']} Units")
 with col2:
     # 정직하게 0부터 시작하고, 나중에 연동 시 올라가게 둡니다.
-    st.metric(label="🔍 확정 위협 포착", value=data['threats_spotted'])
+    st.metric(label="확정 위협 포착", value=data['threats_spotted'])
 with col3:
-    st.metric(label="🛰️ 현재 활성 관측소", value=f"{data['live_sentinels']} Live")
+    st.metric(label="현재 활성 관측소", value=f"{data['live_sentinels']} Live")
 with col4:
-    st.metric(label="⏱️ 엔진 가동 상태", value=data['uptime'])
+    st.metric(label="엔진 가동 상태", value=data['uptime'])
 
 st.divider()
 
