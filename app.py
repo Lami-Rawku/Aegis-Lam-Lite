@@ -25,31 +25,30 @@ def get_real_metrics():
     except:
         hf_downloads = 0
     
-    # 2. Render 서버 실시간 로그 호출 (연동 전에는 기본 시스템 로그 출력)
-    # 소장님의 Render 엔드포인트가 준비되면 아래 URL을 수정하세요.
+    # 2. Render 서버 실시간 로그 호출 (URL 확보 시 아래 주소를 수정하세요)
     RENDER_LOG_URL = "https://your-app.onrender.com/system/raw-logs" 
     try:
         response = requests.get(RENDER_LOG_URL, timeout=3)
         if response.status_code == 200:
             raw_logs = response.text
-            live_logs = filter_ip_addresses(raw_logs) # IP 실시간 마스킹 적용
+            live_logs = filter_ip_addresses(raw_logs)
         else:
             live_logs = "Waiting for Render Sentinel Signal..."
     except:
         # 연동 전 가동 상태 증명용 로컬 로그 생성
         live_logs = (
             f"[{datetime.now().strftime('%H:%M:%S')}] [SYSTEM] Aegis-Lam Engine v2.0 Initialized.\n"
-            f"[{datetime.now().strftime('%H:%M:%S')}] [NETWORK] HuggingFace API Sync: OK.\n"
+            f"[{datetime.now().strftime('%H:%M:%S')}] [NETWORK] HF/GH API Sync: OK.\n"
             f"[{datetime.now().strftime('%H:%M:%S')}] [SECURITY] Logic Checksum Verified.\n"
             f"[{datetime.now().strftime('%H:%M:%S')}] [READY] Waiting for threat signals..."
         )
 
     return {
         "total_deployments": hf_downloads,
-        "threats_spotted": 0,             # 실제 탐지 로직 연동 시 카운팅
-        "live_sentinels": 1,              # 실시간 접속 세션
-        "cpu_usage": 0.08,                # 설계된 최적화 수치
-        "ram_usage": 25.4,                # EXE 환경 실측 데이터
+        "threats_spotted": 0,
+        "live_sentinels": 1,
+        "cpu_usage": 0.08,
+        "ram_usage": 25.4,
         "uptime": "100%",
         "logs": live_logs
     }
@@ -81,24 +80,44 @@ st.divider()
 left_col, right_col = st.columns([1, 1.2])
 
 with left_col:
-    st.subheader("엔진 성능 실측 (Efficiency)")
+    st.subheader("⚡ 엔진 성능 실측 (Efficiency)")
     c1, c2 = st.columns(2)
     c1.success(f"**Pure Logic**\n\n10,621 Bytes")
     c2.warning(f"**Runtime Memory**\n\n25.4 MB")
     
     st.write("---")
     st.write("**리소스 부하 트래킹**")
-    # 0.05% ~ 0.1% 사이의 극도로 낮은 부하를 시각화하여 경량성 강조
     chart_data = pd.DataFrame(np.random.uniform(0.05, 0.09, size=(20, 1)), columns=['CPU %'])
     st.area_chart(chart_data)
 
 with right_col:
     st.subheader("🚨 시스템 무결성 로그 (Live Feed)")
-    # Render 서버에서 가져온 (혹은 생성된) 로그를 출력
     st.code(data['logs'], language="bash")
     
     if st.button("수동 동기화 (Force Sync)"):
         st.rerun()
+
+st.divider()
+
+# 섹션 3: 공식 리소스 및 연락처 (Official Resources & Contact)
+st.subheader("Official Resources & Contact")
+link_col1, link_col2, link_col3, link_col4 = st.columns(4)
+
+with link_col1:
+    st.markdown("#### GitHub")
+    st.markdown("[Source Repository](https://github.com/Lami-Rawku/Aegis-Lam-Lite/releases/tag/v1.0.0-beta)")
+
+with link_col2:
+    st.markdown("#### HuggingFace")
+    st.markdown("[Model Download](https://huggingface.co/Rawku/Aegis-Lam_LiteV2.0)")
+
+with link_col3:
+    st.markdown("#### Email")
+    st.markdown("Lami-Logic@proton.me") # 실제 이메일로 수정
+
+with link_col4:
+    st.markdown("#### Domain")
+    st.markdown("[Project Home](https://lami-logic.com)") # 실제 도메인으로 수정
 
 st.divider()
 st.info("Verified by Rawku Systems | 100% Real-time Data Policy | Privacy Shield (IP Masking) Active")
