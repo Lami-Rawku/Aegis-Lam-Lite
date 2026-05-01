@@ -1,0 +1,30 @@
+# Open Source Software Notice
+
+This project, Aegis-Lam, is licensed under the MIT License.
+Copyright (c) 2026 Lami-Rawku.
+
+---
+
+## Third-Party Software Notices
+
+This project incorporates the following third-party open-source libraries.
+Each library is used under its respective license terms.
+
+### 1. psutil
+- License: BSD 3-Clause License
+- Copyright: (c) 2009, Giampaolo Rodola'
+- Usage: Monitoring system resources and process management.
+
+### 2. requests
+- License: Apache License 2.0
+- Copyright: (c) 2019 Kenneth Reitz and contributors
+- Usage: Secure telemetry and log transmission to the Render server.
+
+### 3. plyer
+- License: MIT License
+- Copyright: (c) 2013-2021 Kivy Team and contributors
+- Usage: Cross-platform desktop notification implementation.
+
+---
+
+The full text of the applicable third-party licenses is included in this repository or can be found in their official source repositories.
